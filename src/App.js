@@ -1,24 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState,useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import api from "./api/EmployeeDb"
+import Employee from "./components/Employee";
+import AddEmployee from "./components/AddEmployee";
+import DashboardLayout from "./components/layout/DashboardLayout";
+
 
 function App() {
+  const[employee, setEmployee]= useState([]);
+  const [addEmp,setEmp]= useState (false);
+
+
+  useEffect(() => {
+    const fetchEmp = async () =>{
+      try{
+        const response = await api.get('');
+        setEmployee(response.data);
+      }catch(err){
+        if(err.response){
+          console.log(err.response.status);
+        }else{
+          console.log(`Error :${err.message}`);
+        }
+      }
+    }
+  fetchEmp();
+},[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/dashboard"
+          element={
+            <DashboardLayout>
+              <h2>Welcome to Admin Dashboard</h2>
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/employees"
+          element={
+            <DashboardLayout>
+              <Employee
+                employees={employee}
+                setEmployee={setEmployee}
+              />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <DashboardLayout>
+              <AddEmployee setEmployee={setEmployee} />
+            </DashboardLayout>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
