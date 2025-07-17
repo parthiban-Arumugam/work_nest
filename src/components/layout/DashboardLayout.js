@@ -4,13 +4,18 @@ import Header from './Header'
 
 const DashboardLayout = ({children}) => {
   return (
-     <div className="flex">
-      <Sidebar />
-      <div className="flex-1 ml-64">
-        <Header />
-        <main className="p-6">{children}</main>
-      </div>
+
+    <>
+    <Header />
+
+      <div className="flex pt-16"> {/* space for fixed header */}
+        <Sidebar />
+
+        <main className="ml-56 p-6 w-full min-h-screen bg-gray-100">
+          {children}
+        </main>
     </div>
+    </>
   )
 }
 

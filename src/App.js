@@ -9,7 +9,6 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 
 function App() {
   const[employee, setEmployee]= useState([]);
-  const [addEmp,setEmp]= useState (false);
 
 
   useEffect(() => {
@@ -31,33 +30,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/dashboard"
-          element={
-            <DashboardLayout>
-              <h2>Welcome to Admin Dashboard</h2>
-            </DashboardLayout>
-          }
-        />
-        <Route
-          path="/employees"
-          element={
-            <DashboardLayout>
-              <Employee
+        <Route path="/" element={<DashboardLayout />} />
+        <Route path="/employees" element={
+          <DashboardLayout >
+          <Employee
                 employees={employee}
-                setEmployee={setEmployee}
-              />
-            </DashboardLayout>
-          }
-        />
-        <Route
-          path="/add"
-          element={
-            <DashboardLayout>
-              <AddEmployee setEmployee={setEmployee} />
-            </DashboardLayout>
-          }
-        />
+                setEmployee={setEmployee} /> </DashboardLayout> } />
+        <Route path="/add" element={
+          <DashboardLayout>
+              <AddEmployee 
+                      setEmployee={setEmployee} /> </DashboardLayout>}/>
       </Routes>
     </Router>
   );

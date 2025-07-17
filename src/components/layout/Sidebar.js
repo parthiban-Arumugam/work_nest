@@ -1,16 +1,43 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-const sidebar = () => {
-  return (
-     <div className="w-64 h-screen bg-gray-800 text-white p-4 fixed">
-      <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
-      <nav className="flex flex-col space-y-4">
-        <Link to="/dashboard" className="hover:text-blue-300">Dashboard</Link>
-        <Link to="/employees" className="hover:text-blue-300">Employee List</Link>
-        <Link to="/add" className="hover:text-blue-300">Add Employee</Link>
-      </nav>
-    </div>
-  )
-}
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default sidebar
+const Sidebar = () => {
+  return (
+    <aside className="w-56 h-screen bg-white text-gray-800 shadow p-4 fixed top-16 left-0 z-10">
+      <nav className="flex flex-col space-y-4 font-semibold">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? 'bg-gray-800 text-white px-3 py-2 rounded'
+              : 'hover:text-gray-700'
+          }
+        >
+          Dashboard
+        </NavLink>
+        <NavLink
+          to="/employees"
+          className={({ isActive }) =>
+            isActive
+              ? 'bg-gray-800 text-white px-3 py-2 rounded'
+              : 'hover:text-gray-700'
+          }
+        >
+          Employees
+        </NavLink>
+        <NavLink
+          to="/add"
+          className={({ isActive }) =>
+            isActive
+              ? 'bg-gray-800 text-white px-2 py-2  rounded'
+              : 'hover:text-gray-700'
+          }
+        >
+          Add Employee
+        </NavLink>
+      </nav>
+    </aside>
+  );
+};
+
+export default Sidebar;
