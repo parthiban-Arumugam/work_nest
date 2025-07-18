@@ -35,28 +35,83 @@ const AddEmployee = () => {
   return (
 <>
     
-    <tr>
-        <td>Id</td>
-      <td>
-        <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder="Name" />
-      </td>
-      <td>
-        <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder="example@gmail.com" />
-      </td>
-      <td>
-        <input type="text" name='designation' value={formData.designation} onChange={handleChange} placeholder="Ex: Software Developer" />
-      </td>
-      <td>
-        <input type="text" name='department' value={formData.department} onChange={handleChange} placeholder="Ex: IT" />
-      </td>
-      <td>
-        <input type="number" name='salary' value={formData.salary} onChange={handleChange} placeholder="Salary" />
-      </td>
-               
-</tr>
-     
-   <button onClick={handleSubmit}>add</button>
- 
+  <div className="max-w-md mx-4 p-5 border rounded-lg shadow">
+      <h2 className="text-xl text-gray-800 font-semibold mb-4 text-center">Add New Employee</h2>
+      <form onSubmit={handleSubmit} className="space-y-4 text-base font-semibold text-gray-800 text-xs">
+        <div>
+          <label className="block mb-1">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            placeholder="Enter full name"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            placeholder="example@gmail.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1">Designation</label>
+          <input
+            type="text"
+            name="designation"
+            value={formData.designation}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            placeholder="Ex: Software Developer"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1">Department</label>
+          <input
+            type="text"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            placeholder="Ex: IT"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block mb-1">Salary</label>
+          <input
+            type="number"
+            name="salary"
+            value={formData.salary}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+            placeholder="Enter salary"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full mt-4 bg-gray-800 text-white py-2 rounded hover:bg-gray-700"
+        >
+          Add Employee
+        </button>
+      </form>
+    </div>
+
 </>
 )
 }
