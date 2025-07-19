@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import api from "../api/EmployeeDb"
 
-const AddEmployee = () => {
+const AddEmployee = ({fetchEmp}) => {
     const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,6 +23,7 @@ const AddEmployee = () => {
     e.preventDefault();
     try{
         const response = await api.post('',formData)
+        fetchEmp();
          if (response.status === 201 || response.status === 200) {
             alert('Employee added successfully!');
             

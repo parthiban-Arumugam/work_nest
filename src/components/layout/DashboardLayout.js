@@ -8,7 +8,7 @@ const DashboardLayout = ({children}) => {
     <>
     <Header />
 
-      <div className="flex pt-10"> {/* space for fixed header */}
+      <div className="flex pt-10"> 
         <Sidebar />
 
         <main className="ml-40 p-6 w-full min-h-screen bg-gray-100">

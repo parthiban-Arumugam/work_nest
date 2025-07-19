@@ -4,14 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import api from "./api/EmployeeDb"
 import Employee from "./components/Employee";
 import AddEmployee from "./components/AddEmployee";
+import EditEmployeeForm from "./components/EditEmployee";
 import DashboardLayout from "./components/layout/DashboardLayout";
 
 
 function App() {
   const[employee, setEmployee]= useState([]);
 
-
-  useEffect(() => {
     const fetchEmp = async () =>{
       try{
         const response = await api.get('');
@@ -23,8 +22,9 @@ function App() {
           console.log(`Error :${err.message}`);
         }
       }
-    }
-  fetchEmp();
+    };
+    useEffect(() => {
+        fetchEmp();
 },[])
 
   return (
@@ -35,11 +35,22 @@ function App() {
           <DashboardLayout >
           <Employee
                 employees={employee}
-                setEmployee={setEmployee} /> </DashboardLayout> } />
+                setEmployee={setEmployee}
+                fetchEmp ={fetchEmp} /> </DashboardLayout> } />
         <Route path="/add" element={
           <DashboardLayout>
               <AddEmployee 
-                      setEmployee={setEmployee} /> </DashboardLayout>}/>
+                      setEmployee={setEmployee}
+                      fetchEmp ={fetchEmp} /> </DashboardLayout>}/>
+
+        <Route path="/edit/:id" element={
+            <DashboardLayout>
+            <EditEmployeeForm 
+             employees={employee} 
+              setEmployee={setEmployee}
+              fetchEmp ={fetchEmp} />
+              </DashboardLayout>
+} />
       </Routes>
     </Router>
   );
