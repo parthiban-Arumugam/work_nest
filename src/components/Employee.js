@@ -28,7 +28,7 @@ const handleDelete = async (id) => {
   return (
     <div className="p-4 text-xs " >
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold">Employee List</h1>
+        <h1 className="text-2xl font-bold">Employees List</h1>
       </div>
       <div className='mb-4'>
       <input type="text"
@@ -41,8 +41,8 @@ const handleDelete = async (id) => {
 
       {addEmp && <AddEmployee setEmp={setEmp} />}
 
-      <div className="right-0 overflow-x-auto bg-white rounded-lg shadow mt-4">
-        <table className="min-w-full text-sm text-left">
+      <div className="bg-white rounded-lg shadow mt-4 overflow-hidden w-full">
+        <table className="max-w-full text-sm text-left table-fixed">
           <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
             <tr>
               <th className="px-3 py-2">ID</th>
@@ -64,13 +64,13 @@ const handleDelete = async (id) => {
             ) : (
               filteredEmployees.map((emp) => (
                 <tr key={emp.id} className="border-b hover:bg-gray-50">
-                  <td className="px-4 py-3">{emp.id}</td>
-                  <td className="px-4 py-3">{emp.name}</td>
-                  <td className="px-4 py-3">{emp.email}</td>
-                  <td className="px-4 py-3">{emp.designation}</td>
+                  <td className="px-2 py-2">{emp.id}</td>
+                  <td className="px-2 py-3">{emp.name}</td>
+                  <td className="px-2 py-3">{emp.email}</td>
+                  <td className="px-2 py-3 break-words">{emp.designation}</td>
                   <td className="px-2 py-2">{emp.department}</td>
-                  <td className="px-4 py-3">{emp.salary}</td>
-                  <td className="px-4 py-3 flex gap-2">
+                  <td className="px-2 py-3">{emp.salary}</td>
+                  <td className="px-2 py-3 flex gap-2">
                     <Link to={`/edit/${emp.id}`} className="text-blue-600 hover:underline">Edit</Link>
                     <button
                       onClick={() => handleDelete(emp.id)}

@@ -51,8 +51,8 @@ const EditEmployee = ({ employees, setEmployee, fetchEmp }) => {
   };
 
   return (
-    <form onSubmit={handleUpdate} className="p-4 bg-yellow-100 rounded shadow max-w-md mx-auto mt-4">
-      <h2 className="text-lg font-bold mb-4">Edit Employee</h2>
+    <form onSubmit={handleUpdate} className="p-4 bg-white rounded shadow max-w-md mx-5 mt-4 font-semibold text-gray-800 ">
+      <h2 className="text-lg  mb-4">Edit Employee</h2>
       {['name', 'email', 'designation', 'department', 'salary'].map((field) => (
         <input
           key={field}

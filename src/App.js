@@ -6,6 +6,7 @@ import Employee from "./components/Employee";
 import AddEmployee from "./components/AddEmployee";
 import EditEmployeeForm from "./components/EditEmployee";
 import DashboardLayout from "./components/layout/DashboardLayout";
+import DashboardHome from "./components/DashboardHome";
 
 
 function App() {
@@ -30,7 +31,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DashboardLayout />} />
+        <Route path="/" element={<DashboardLayout>
+    <DashboardHome employees={employee} />
+  </DashboardLayout>} />
         <Route path="/employees" element={
           <DashboardLayout >
           <Employee
