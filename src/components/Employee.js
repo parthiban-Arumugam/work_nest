@@ -3,6 +3,9 @@ import AddEmployee from './AddEmployee';
 import { Link } from 'react-router-dom';
 import api from "../api/EmployeeDb"
 
+import { MdDeleteSweep } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+
 const Employee = ({ employees, setEmp, addEmp, fetchEmp }) => {
 
   const [search, setSearch] = useState('');
@@ -28,7 +31,7 @@ const handleDelete = async (id) => {
   return (
     <div className="p-4 text-xs " >
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold">Employees List</h1>
+        <h1 className="text-xl font-bold text-gray-800">Employees List</h1>
       </div>
       <div className='mb-4'>
       <input type="text"
@@ -71,12 +74,12 @@ const handleDelete = async (id) => {
                   <td className="px-2 py-2">{emp.department}</td>
                   <td className="px-2 py-3">{emp.salary}</td>
                   <td className="px-2 py-3 flex gap-2">
-                    <Link to={`/edit/${emp.id}`} className="text-blue-600 hover:underline">Edit</Link>
+                    <Link to={`/edit/${emp.id}`} className="text-blue-600 hover:underline"><MdEdit /></Link>
                     <button
                       onClick={() => handleDelete(emp.id)}
                       className="text-red-600 hover:underline"
                     >
-                      Delete
+                      <MdDeleteSweep />
                     </button>
                   </td>
                 </tr>
