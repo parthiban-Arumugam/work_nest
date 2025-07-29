@@ -1,6 +1,7 @@
 package com.example.employee_management.controller;
 
 import com.example.employee_management.model.Employee;
+import org.hibernate.boot.jaxb.Origin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.employee_management.service.EmployeeService;
@@ -8,7 +9,8 @@ import com.example.employee_management.service.EmployeeService;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/employee")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class EmployeeController {
     @Autowired
     private EmployeeService empService;
