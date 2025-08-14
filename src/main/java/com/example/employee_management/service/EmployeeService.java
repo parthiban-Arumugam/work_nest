@@ -13,10 +13,13 @@ public class EmployeeService {
     private EmployeeRepo empRepo;
 
     public List<Employee> getAllemployees() {
-        return empRepo.findAll();
+        return empRepo.findAllWithSkills();
     }
 
     public Employee AddEmployee(Employee employee) {
+        if (employee.getSkills() != null) {
+            employee.getSkills().forEach(skill -> skill.setEmployee(employee));
+        }
         return  empRepo.save(employee);
     }
 
@@ -33,6 +36,14 @@ public class EmployeeService {
         existingEmployee.setDepartment(updatedemployee.getDepartment());
         existingEmployee.setDesignation(updatedemployee.getDesignation());
         existingEmployee.setSalary(updatedemployee.getSalary());
+
+        existingEmployee.getSkills().clear();
+        if (updatedemployee.getSkills() != null) {
+            updatedemployee.getSkills().forEach(skill -> {
+                skill.setEmployee(existingEmployee);
+                existingEmployee.getSkills().add(skill);
+            });
+        }
 
         return empRepo.save(existingEmployee);
     }
